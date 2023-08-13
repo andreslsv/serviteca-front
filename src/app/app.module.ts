@@ -12,6 +12,10 @@ import { mockApiServices } from 'app/mock-api';
 import { LayoutModule } from 'app/layout/layout.module';
 import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
+import { MatTableModule } from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
@@ -31,6 +35,10 @@ const routerConfig: ExtraOptions = {
         FuseModule,
         FuseConfigModule.forRoot(appConfig),
         FuseMockApiModule.forRoot(mockApiServices),
+
+        MatTableModule,
+        MatButtonModule,
+        MatIconModule,
 
         // Core module of your application
         CoreModule,
