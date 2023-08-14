@@ -4,19 +4,40 @@ import { PropietariosComponent } from './propietarios.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { DetallePropietarioComponent } from './detalle-propietario/detalle-propietario.component';
+import { ListaPropietariosComponent } from './lista-propietarios/lista-propietarios.component';
 
 
 
 const PropietariosRoutes: Route[] = [
-    {
+    /*{
         path     : '',
         component: PropietariosComponent
+    }*/
+    {
+        path     : '',
+        //component: UsuariosComponent,
+        children : [
+            {
+                path: '', redirectTo: 'main'
+            },
+            {
+                path     : 'main',
+                component: ListaPropietariosComponent,
+            },
+            {
+                path     : 'detalle/:idPropietario',
+                component: DetallePropietarioComponent,
+            }
+        ]
     }
 ];
 
 @NgModule({
     declarations: [
         PropietariosComponent,
+        DetallePropietarioComponent,
+        ListaPropietariosComponent,
     ],
     imports     : [
         RouterModule.forChild(PropietariosRoutes),
