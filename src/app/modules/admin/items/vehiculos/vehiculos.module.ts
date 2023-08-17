@@ -6,6 +6,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { DetalleVehiculoComponent } from './detalle-vehiculo/detalle-vehiculo.component';
 import { ListaVehiculosComponent } from './lista-vehiculos/lista-vehiculos.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 const VehiculosRoutes: Route[] = [
     {
@@ -37,7 +40,10 @@ const VehiculosRoutes: Route[] = [
         RouterModule.forChild(VehiculosRoutes),
         MatTableModule,
         MatButtonModule,
-        MatIconModule
+        MatIconModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule
     ]
 })
 export class VehiculosModule

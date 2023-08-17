@@ -15,6 +15,10 @@ import { appRoutes } from 'app/app.routing';
 import { MatTableModule } from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
 
 
 const routerConfig: ExtraOptions = {
@@ -39,6 +43,9 @@ const routerConfig: ExtraOptions = {
         MatTableModule,
         MatButtonModule,
         MatIconModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
 
         // Core module of your application
         CoreModule,
