@@ -6,6 +6,9 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { DetallePropietarioComponent } from './detalle-propietario/detalle-propietario.component';
 import { ListaPropietariosComponent } from './lista-propietarios/lista-propietarios.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -43,7 +46,10 @@ const PropietariosRoutes: Route[] = [
         RouterModule.forChild(PropietariosRoutes),
         MatTableModule,
         MatButtonModule,
-        MatIconModule
+        MatIconModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule
     ]
 })
 export class PropietariosModule

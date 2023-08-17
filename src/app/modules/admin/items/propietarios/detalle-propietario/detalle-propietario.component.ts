@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-detalle-propietario',
@@ -7,7 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetallePropietarioComponent implements OnInit {
 
-  constructor() { }
+  vehiculoForm = this._formBuilder.group({
+    tipo: [, [Validators.required]],
+    nombre: [, [Validators.required]],
+    tipoDocumento: [, [Validators.required]],
+    correo: [, [Validators.required]],
+    documento: [, [Validators.required]],
+    telefono: [, [Validators.required]],
+    telefono2: [, [Validators.required]],
+    departamento: [, [Validators.required]],
+    ciudad: [, [Validators.required]],
+    anio: [, [Validators.required]]
+  });
+
+  constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
   }

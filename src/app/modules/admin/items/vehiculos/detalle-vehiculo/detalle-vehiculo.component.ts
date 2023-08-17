@@ -9,11 +9,12 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class DetalleVehiculoComponent implements OnInit {
 
   vehiculoForm = this._formBuilder.group({
-    placa     : [, [Validators.required]],
-    tipo     : [, [Validators.required]],
-    marca     : [, [Validators.required]],
-    modelo     : [, [Validators.required]],
-    anio     : [, [Validators.required]]
+    placa: [, [Validators.required]],
+    conductor: [, [Validators.required]],
+    tipo: [, [Validators.required]],
+    marca: [, [Validators.required]],
+    modelo: [, [Validators.required]],
+    anio: [, [Validators.required]]
   });
 
   constructor(private _formBuilder: FormBuilder) { }

@@ -14,8 +14,59 @@
         </div>
     </div>
 
-    <div>
-        
+    <div class="bg-card shadow rounded-lg p-2 mt-2">
+        <div>
+            <h2 class="text-xl">Propietario</h2>
+        </div>
+        <form [formGroup]="vehiculoForm">
+            <div class="grid grid-cols-3 gap-2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Tipo</mat-label>
+                    <input matInput type="text" formControlName="tipo" />
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput type="text" formControlName="nombre" />
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Tipo Documento</mat-label>
+                    <input matInput type="text" formControlName="tipoDocumento" />
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Documento</mat-label>
+                    <input matInput type="text" formControlName="documento" />
+                </mat-form-field>
+            </div>
+            <div class="grid grid-cols-3 gap-2 -mt-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Teléfono</mat-label>
+                    <input matInput type="text" formControlName="telefono" />
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Teléfono 2</mat-label>
+                    <input matInput type="text" formControlName="telefono2" />
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Correo</mat-label>
+                    <input matInput type="text" formControlName="correo" />
+                </mat-form-field>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 -mt-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Departamento</mat-label>
+                    <input matInput type="text" formControlName="departamento" />
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Ciudad</mat-label>
+                    <input matInput type="text" formControlName="ciudad" />
+                </mat-form-field>
+            </div>
+
+            <div class="flex justify-end">
+                <button mat-button>Guardar</button>
+            </div>
+        </form>
     </div>
 
 </section>
