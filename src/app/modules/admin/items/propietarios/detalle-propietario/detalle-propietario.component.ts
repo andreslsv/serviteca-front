@@ -21,6 +21,21 @@ export class DetallePropietarioComponent implements OnInit {
     anio: [, [Validators.required]]
   });
 
+  displayedColumns: string[] = ['id', 'placa', 'conductor', 'observacion', 'modelo', 'propietario', 'acciones'];
+
+  dataVehiculos = [
+    {
+      id: 1,
+      placa: "ABC123",
+      conductor: "Andrés Salas",
+      telefono: "3118976896",
+      observacionConductor: "",
+      observacion: "",
+      modelo: "AAAAAA",
+      propietario: "Andrés Salas"
+    },
+  ];
+
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
