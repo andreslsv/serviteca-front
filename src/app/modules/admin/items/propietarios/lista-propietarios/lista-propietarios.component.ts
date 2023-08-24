@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from 'app/servicios/api.service';
 
 export interface PeriodicElement {
   name: string;
@@ -60,9 +61,16 @@ export class ListaPropietariosComponent implements OnInit {
     this.router.navigate(['/items/propietarios/detalle/', data.id]);
   }
 
-  constructor(private router: Router,) { }
+  constructor(private router: Router,private _apiService:ApiService,) { }
+
+  obtenerValores(){
+    this._apiService.getQuery("vehiculo", "").subscribe((data)=>{
+      console.log("Este es el valor de la respuesta", data);
+    });
+  }
 
   ngOnInit(): void {
+    this.obtenerValores();
   }
 
 }

@@ -10,13 +10,13 @@ export class ApiService {
 
   constructor(private _httpClient: HttpClient,) { }
   
-  getQuery(_nodo:string,_nombreQuery:string,_paramsQuery:string){
+  getQuery(_nombreQuery:string,_paramsQuery:string){
     const nombreQuery = _nombreQuery;
     const paramsQuery = _paramsQuery?`?${_paramsQuery}`:``;
     return this._httpClient.get(`${environment.apiUrl}/${nombreQuery}${paramsQuery}`);
   }
 
-  postQuery(_nodo:string,_nombreQuery:string,_paramsQuery:string,_dataQuery:any){
+  postQuery(_nombreQuery:string,_paramsQuery:string,_dataQuery:any){
     const nombreQuery = _nombreQuery;
     const paramsQuery = _paramsQuery?`?${_paramsQuery}`:``;
     return this._httpClient.post(`${environment.apiUrl}/${nombreQuery}${paramsQuery}`,_dataQuery);
