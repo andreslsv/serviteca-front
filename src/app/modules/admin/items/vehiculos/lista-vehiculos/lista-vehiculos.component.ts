@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from 'app/servicios/api.service';
 
 @Component({
   selector: 'app-lista-vehiculos',
@@ -9,26 +10,22 @@ import { Router } from '@angular/router';
 export class ListaVehiculosComponent implements OnInit {
   displayedColumns: string[] = ['id', 'placa', 'conductor', 'observacion', 'modelo', 'propietario', 'acciones'];
 
-  dataVehiculos = [
-    {
-      id: 1,
-      placa: "ABC123",
-      conductor: "Andrés Salas",
-      telefono: "3118976896",
-      observacionConductor: "",
-      observacion: "",
-      modelo: "AAAAAA",
-      propietario: "Andrés Salas"
-    },
-  ];
+  dataVehiculos:any;
 
   irDetalleVehiculo(data: any) {
     this.router.navigate(['/items/vehiculos/detalle/', data.id]);
   }
 
-  constructor(private router: Router) { }
+  obtenerValores(){
+    this._apiService.getQuery("vehiculo", "").subscribe((data)=>{
+      this.dataVehiculos = data;
+    });
+  }
+
+  constructor(private router: Router, private _apiService:ApiService) { }
 
   ngOnInit(): void {
+    this.obtenerValores();
   }
 
 }

@@ -31,30 +31,7 @@ export class ListaPropietariosComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nombre', 'documento', 'telefono','email', 'tipo', 'direccion', 'ciudad', 'acciones'];
   dataSource = ELEMENT_DATA;
 
-  dataPropietarios = [
-    {
-      id:1,
-      nombre:"Fernando Andrés Salas",
-      tipoDocumento:1,
-      documento:"1090481240",
-      telefono:"3118976896",
-      email:"Andres@gmail.com",
-      tipo:1,
-      direccion:"Cl 6 #4-27 Doña Nidia",
-      ciudad:2
-    },
-    {
-      id:2,
-      nombre:"Diego Andrés Medina",
-      tipoDocumento:1,
-      documento:"1589555555",
-      telefono:"31155555555",
-      email:"Medina@gmail.com",
-      tipo:1,
-      direccion:"Cl 6 #4-27 Niza",
-      ciudad:3
-    }
-  ];
+  dataPropietarios:any;
 
 
   irDetallePropietario(data: any) {
@@ -63,14 +40,7 @@ export class ListaPropietariosComponent implements OnInit {
 
   constructor(private router: Router,private _apiService:ApiService,) { }
 
-  obtenerValores(){
-    this._apiService.getQuery("vehiculo", "").subscribe((data)=>{
-      console.log("Este es el valor de la respuesta", data);
-    });
-  }
-
   ngOnInit(): void {
-    this.obtenerValores();
   }
 
 }
