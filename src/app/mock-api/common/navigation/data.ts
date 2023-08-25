@@ -36,6 +36,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 type : 'basic',
                 icon : 'heroicons_outline:chart-pie',
                 link : '/items/vehiculos'
+            },
+            {
+                id   : 'items.crear',
+                title: 'Crear',
+                type : 'basic',
+                icon : 'heroicons_outline:plus-circle',
+                link : '/items/crear'
             }
         ]
     },

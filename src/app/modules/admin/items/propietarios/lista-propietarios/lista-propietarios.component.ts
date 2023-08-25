@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'app/servicios/api.service';
+import { PropietariosService } from '../propietarios.service';
 
 export interface PeriodicElement {
   name: string;
@@ -32,15 +33,29 @@ export class ListaPropietariosComponent implements OnInit {
   dataSource = ELEMENT_DATA;
 
   dataPropietarios:any;
+  propietariosAlmacenados: any;
 
 
   irDetallePropietario(data: any) {
     this.router.navigate(['/items/propietarios/detalle/', data.id]);
   }
 
-  constructor(private router: Router,private _apiService:ApiService,) { }
+  getPropietarios(){
+    this._apiService.getQuery("propietarios", "").subscribe((data)=>{
+      this.dataPropietarios = data;
+    });
+  }
+
+  getPropietariosAlmacenados(){
+    this._propietariosService.getPropietariosAlmacenados().subscribe((data)=>{
+      this.propietariosAlmacenados=data;
+    });
+  }
+
+  constructor(private router: Router,private _apiService:ApiService,private _propietariosService:PropietariosService) { }
 
   ngOnInit(): void {
+    this.getPropietarios();
   }
 
 }

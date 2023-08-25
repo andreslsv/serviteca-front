@@ -18,6 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { ItemsComponent } from './modules/admin/items/items.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -28,7 +30,8 @@ const routerConfig: ExtraOptions = {
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        ItemsComponent
     ],
     imports     : [
         BrowserModule,
@@ -46,6 +49,7 @@ const routerConfig: ExtraOptions = {
         ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,
+        MatTabsModule,
 
         // Core module of your application
         CoreModule,

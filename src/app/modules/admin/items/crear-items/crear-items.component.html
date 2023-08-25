@@ -1,0 +1,12 @@
+<section class="p-2 w-full">
+    <mat-tab-group class="w-full">
+        <mat-tab label="Propietario">
+            <div class="bg-card shadow rounded-lg p-2 mt-2">
+                <mat-tab-group class="w-full">
+                    <mat-tab *ngFor="let propietario of propietariosAlmacenados" label="Vehículo">Content 2</mat-tab>
+                </mat-tab-group>
+            </div>
+        </mat-tab>
+        <mat-tab label="Vehículo">Content 2</mat-tab>
+    </mat-tab-group>   
+</section>
