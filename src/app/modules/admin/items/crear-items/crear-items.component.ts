@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PropietariosService } from '../propietarios/propietarios.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-crear-items',
@@ -8,18 +9,76 @@ import { PropietariosService } from '../propietarios/propietarios.service';
 })
 export class CrearItemsComponent implements OnInit {
 
-  propietariosAlmacenados: any;
+  propietarioForm = this._formBuilder.array([
+    this.createFormPropietario(),
+    this.createFormPropietario(),
+    this.createFormPropietario(),
+    this.createFormPropietario(),
+    this.createFormPropietario(),
+    this.createFormPropietario(),
+    this.createFormPropietario(),
+    this.createFormPropietario(),
+  ]);
 
-  getPropietariosAlmacenados(){
-    this._propietariosService.getPropietariosAlmacenados().subscribe((data)=>{
-      this.propietariosAlmacenados=data;
+  vehiculoForm = this._formBuilder.array([
+    this.crearFormVehiculo(),
+    this.crearFormVehiculo(),
+    this.crearFormVehiculo(),
+    this.crearFormVehiculo(),
+    this.crearFormVehiculo(),
+    this.crearFormVehiculo(),
+    this.crearFormVehiculo(),
+    this.crearFormVehiculo(),
+  ]);
+
+  propietariosAlmacenados: any;
+  vehiculosAlmacenados: any;
+
+  getPropietariosAlmacenados() {
+    this._propietariosService.getPropietariosAlmacenados().subscribe((data) => {
+      this.propietariosAlmacenados = data;
     });
   }
 
-  constructor(private _propietariosService:PropietariosService) { }
+  getVehiculosAlmacenados() {
+    this._propietariosService.getPropietariosAlmacenados().subscribe((data) => {
+      this.vehiculosAlmacenados = data;
+    });
+  }
+
+  constructor(private _propietariosService: PropietariosService, private _formBuilder: FormBuilder) { }
+
+
+  createFormPropietario(): FormGroup {
+    return this._formBuilder.group({
+      tipo: [, [Validators.required]],
+      nombre: [, [Validators.required]],
+      tipoDocumento: [, [Validators.required]],
+      correo: [, [Validators.required]],
+      documento: [, [Validators.required]],
+      telefono: [, [Validators.required]],
+      telefono2: [, [Validators.required]],
+      departamento: [, [Validators.required]],
+      ciudad: [, [Validators.required]],
+      anio: [, [Validators.required]]
+    });
+  }
+
+  crearFormVehiculo(): FormGroup {
+    return this._formBuilder.group({
+      placa: [, [Validators.required]],
+      conductor: [, [Validators.required]],
+      tipo: [, [Validators.required]],
+      marca: [, [Validators.required]],
+      modelo: [, [Validators.required]],
+      anio: [, [Validators.required]]
+    });
+  }
+
 
   ngOnInit(): void {
     this.getPropietariosAlmacenados();
+    this.getVehiculosAlmacenados();
   }
 
 }

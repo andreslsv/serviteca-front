@@ -3,10 +3,110 @@
         <mat-tab label="Propietario">
             <div class="bg-card shadow rounded-lg p-2 mt-2">
                 <mat-tab-group class="w-full">
-                    <mat-tab *ngFor="let propietario of propietariosAlmacenados" label="Vehículo">Content 2</mat-tab>
+                    <form [formGroup]="propietarioForm">
+                        <mat-tab *ngFor="let formG of propietarioForm.controls; let i = index" label="Propietario">
+                            <div [formGroup]="formG">
+
+                                <div class="grid grid-cols-3 gap-2">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Tipo</mat-label>
+                                        <input matInput type="text" formControlName="tipo" />
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Nombre</mat-label>
+                                        <input matInput type="text" formControlName="nombre" />
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Tipo Documento</mat-label>
+                                        <input matInput type="text" formControlName="tipoDocumento" />
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Documento</mat-label>
+                                        <input matInput type="text" formControlName="documento" />
+                                    </mat-form-field>
+                                </div>
+                                <div class="grid grid-cols-3 gap-2 -mt-3">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Teléfono</mat-label>
+                                        <input matInput type="text" formControlName="telefono" />
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Teléfono 2</mat-label>
+                                        <input matInput type="text" formControlName="telefono2" />
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Correo</mat-label>
+                                        <input matInput type="text" formControlName="correo" />
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="grid grid-cols-3 gap-2 -mt-3">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Departamento</mat-label>
+                                        <input matInput type="text" formControlName="departamento" />
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Ciudad</mat-label>
+                                        <input matInput type="text" formControlName="ciudad" />
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="flex justify-end">
+                                    <button mat-button>Guardar</button>
+                                </div>
+
+                            </div>
+
+                        </mat-tab>
+                    </form>
                 </mat-tab-group>
             </div>
         </mat-tab>
-        <mat-tab label="Vehículo">Content 2</mat-tab>
-    </mat-tab-group>   
+        <mat-tab label="Vehículo">
+            <div class="bg-card shadow rounded-lg p-2 mt-2">
+                <mat-tab-group class="w-full">
+                    <form [formGroup]="vehiculoForm">
+                        <mat-tab *ngFor="let vForm of vehiculoForm.controls; let i = index" label="Vehículo">
+
+                            <div [formGroup]="vForm">
+                                <div class="grid grid-cols-3 gap-2">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Placa</mat-label>
+                                        <input matInput type="text" formControlName="placa" />
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Tipo</mat-label>
+                                        <input matInput type="text" formControlName="tipo" />
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Conductor</mat-label>
+                                        <input matInput type="text" formControlName="conductor" />
+                                    </mat-form-field>
+                                </div>
+                                <div class="grid grid-cols-3 gap-2 -mt-3">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Marca</mat-label>
+                                        <input matInput type="text" formControlName="marca" />
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Modelo</mat-label>
+                                        <input matInput type="text" formControlName="modelo" />
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Año</mat-label>
+                                        <input matInput type="text" formControlName="anio" />
+                                    </mat-form-field>
+                                </div>
+    
+                                <div class="flex justify-end">
+                                    <button mat-button>Guardar</button>
+                                </div>
+
+                            </div>
+                        </mat-tab>
+                    </form>
+                </mat-tab-group>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
 </section>
