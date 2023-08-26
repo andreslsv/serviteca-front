@@ -9,18 +9,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CrearItemsComponent implements OnInit {
 
-  propietarioForm = this._formBuilder.array([
-    this.createFormPropietario(),
-    this.createFormPropietario(),
-    this.createFormPropietario(),
-    this.createFormPropietario(),
-    this.createFormPropietario(),
-    this.createFormPropietario(),
-    this.createFormPropietario(),
-    this.createFormPropietario(),
+  propietarioArrayForm = this._formBuilder.array([
+    this.crearFormPropietario(),
+    this.crearFormPropietario(),
+    this.crearFormPropietario(),
+    this.crearFormPropietario(),
+    this.crearFormPropietario(),
+    this.crearFormPropietario(),
+    this.crearFormPropietario(),
+    this.crearFormPropietario(),
   ]);
 
-  vehiculoForm = this._formBuilder.array([
+  vehiculoArrayForm = this._formBuilder.array([
     this.crearFormVehiculo(),
     this.crearFormVehiculo(),
     this.crearFormVehiculo(),
@@ -49,7 +49,7 @@ export class CrearItemsComponent implements OnInit {
   constructor(private _propietariosService: PropietariosService, private _formBuilder: FormBuilder) { }
 
 
-  createFormPropietario(): FormGroup {
+  crearFormPropietario(): FormGroup {
     return this._formBuilder.group({
       tipo: [, [Validators.required]],
       nombre: [, [Validators.required]],

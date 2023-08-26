@@ -3,9 +3,9 @@
         <mat-tab label="Propietario">
             <div class="bg-card shadow rounded-lg p-2 mt-2">
                 <mat-tab-group class="w-full">
-                    <form [formGroup]="propietarioForm">
-                        <mat-tab *ngFor="let formG of propietarioForm.controls; let i = index" label="Propietario">
-                            <div [formGroup]="formG">
+                    <form [formGroup]="propietarioArrayForm">
+                        <mat-tab *ngFor="let propietarioForm of propietarioArrayForm.controls; let i = index" label="Propietario">
+                            <div [formGroup]="propietarioForm">
 
                                 <div class="grid grid-cols-3 gap-2">
                                     <mat-form-field appearance="outline">
@@ -65,10 +65,10 @@
         <mat-tab label="Vehículo">
             <div class="bg-card shadow rounded-lg p-2 mt-2">
                 <mat-tab-group class="w-full">
-                    <form [formGroup]="vehiculoForm">
-                        <mat-tab *ngFor="let vForm of vehiculoForm.controls; let i = index" label="Vehículo">
+                    <form [formGroup]="vehiculoArrayForm">
+                        <mat-tab *ngFor="let vehiculoForm of vehiculoArrayForm.controls; let i = index" label="Vehículo">
 
-                            <div [formGroup]="vForm">
+                            <div [formGroup]="vehiculoForm">
                                 <div class="grid grid-cols-3 gap-2">
                                     <mat-form-field appearance="outline">
                                         <mat-label>Placa</mat-label>
