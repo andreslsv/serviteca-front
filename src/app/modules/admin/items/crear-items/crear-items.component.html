@@ -4,7 +4,8 @@
             <div class="bg-card shadow rounded-lg p-2 mt-2">
                 <mat-tab-group class="w-full">
                     <form [formGroup]="propietarioArrayForm">
-                        <mat-tab *ngFor="let propietarioForm of propietarioArrayForm.controls; let i = index" label="Propietario">
+                        <mat-tab *ngFor="let propietarioForm of propietarioArrayForm.controls; let i = index"
+                            label="Propietario">
                             <div [formGroup]="propietarioForm">
 
                                 <div class="grid grid-cols-3 gap-2">
@@ -64,47 +65,68 @@
         </mat-tab>
         <mat-tab label="Vehículo">
             <div class="bg-card shadow rounded-lg p-2 mt-2">
-                <mat-tab-group class="w-full">
+                <mat-tab-group class="w-full" (selectedTabChange)="cambioTabVehiculo($event)">
+
                     <form [formGroup]="vehiculoArrayForm">
-                        <mat-tab *ngFor="let vehiculoForm of vehiculoArrayForm.controls; let i = index" label="Vehículo">
+                        <mat-tab *ngFor="let vehiculoForm of vehiculoArrayForm.controls; let i = index"
+                            [label]="vehiculosAlmacenados[i]?.guardado ? vehiculosAlmacenados[i]?.placa : 'Vehi'">
+                            <ng-container *ngIf="!vehiculosAlmacenados[i]?.guardado">
+                                <div [formGroup]="vehiculoForm">
+                                    <div class="grid grid-cols-3 gap-2">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Placa</mat-label>
+                                            <input matInput type="text" formControlName="placa" />
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Tipo</mat-label>
+                                            <mat-select matInput formControlName="tipo">
+                                                <mat-option value="1">Carro</mat-option>
+                                                <mat-option value="2">Moto</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Propetario</mat-label>
+                                            <mat-select matInput formControlName="propietarioId">
+                                                <mat-option value="1">Propietario 1</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Conductor</mat-label>
+                                            <input matInput type="text" formControlName="conductor" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="grid grid-cols-3 gap-2 -mt-3">
+                                        <mat-form-field appearance="outline">h
+                                            <mat-label>Marca</mat-label>
+                                            <mat-select matInput formControlName="marca">
+                                                <mat-option value="1">Marca 1</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Modelo</mat-label>
+                                            <mat-select matInput formControlName="modelo">
+                                                <mat-option value="1">Modelo 1</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Año</mat-label>
+                                            <input matInput type="text" formControlName="anio" />
+                                        </mat-form-field>
+                                    </div>
 
-                            <div [formGroup]="vehiculoForm">
-                                <div class="grid grid-cols-3 gap-2">
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Placa</mat-label>
-                                        <input matInput type="text" formControlName="placa" />
-                                    </mat-form-field>
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Tipo</mat-label>
-                                        <input matInput type="text" formControlName="tipo" />
-                                    </mat-form-field>
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Conductor</mat-label>
-                                        <input matInput type="text" formControlName="conductor" />
-                                    </mat-form-field>
+                                    <div class="flex justify-end">
+                                        <button (click)="guardarVehiculo()" mat-button>Guardar</button>
+                                    </div>
                                 </div>
-                                <div class="grid grid-cols-3 gap-2 -mt-3">
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Marca</mat-label>
-                                        <input matInput type="text" formControlName="marca" />
-                                    </mat-form-field>
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Modelo</mat-label>
-                                        <input matInput type="text" formControlName="modelo" />
-                                    </mat-form-field>
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Año</mat-label>
-                                        <input matInput type="text" formControlName="anio" />
-                                    </mat-form-field>
+                            </ng-container>
+                            <ng-container *ngIf="vehiculosAlmacenados[i]?.placa">
+                                <div class="p-4 bg-stone-100 rounded-lg">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti atque veniam quas distinctio ipsam optio illo. Maiores eligendi obcaecati a deleniti, totam, natus illo earum, assumenda cum tenetur harum. Odit!
                                 </div>
-    
-                                <div class="flex justify-end">
-                                    <button mat-button>Guardar</button>
-                                </div>
-
-                            </div>
+                            </ng-container>
                         </mat-tab>
                     </form>
+
                 </mat-tab-group>
             </div>
         </mat-tab>

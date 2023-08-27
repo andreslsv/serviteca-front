@@ -14,6 +14,8 @@ import { CrearItemsComponent } from './crear-items/crear-items.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import {MatSelectModule} from '@angular/material/select';
+
 
 const VehiculosRoutes: Route[] = [
     {
@@ -64,7 +66,8 @@ const VehiculosRoutes: Route[] = [
         MatFormFieldModule,
         MatInputModule,
         MatTabsModule,
-        CommonModule
+        CommonModule,
+        MatSelectModule
         //BrowserModule
     ]
 })

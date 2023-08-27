@@ -20,6 +20,7 @@ export class DetalleVehiculoComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    
   }
 
 }

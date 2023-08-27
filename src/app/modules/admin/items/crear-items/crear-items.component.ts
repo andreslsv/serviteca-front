@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PropietariosService } from '../propietarios/propietarios.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { VehiculosService } from '../vehiculos/vehiculos.service';
+import { ApiService } from 'app/servicios/api.service';
 
 @Component({
   selector: 'app-crear-items',
@@ -8,6 +10,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./crear-items.component.scss']
 })
 export class CrearItemsComponent implements OnInit {
+  indiceVehiculosAlmacenados: number;
+  propietariosAlmacenados: any;
+  vehiculosAlmacenados: any;
+
+  guardarVehiculo() {
+    this._apiService.postQuery("vehiculo","",this.vehiculoArrayForm.value[this.indiceVehiculosAlmacenados]).subscribe((data)=>{
+      this.vehiculosAlmacenados[this.indiceVehiculosAlmacenados]=this.vehiculoArrayForm.value[this.indiceVehiculosAlmacenados];
+      this._vehiculosService.setVhiculosAlmacenados(this.vehiculosAlmacenados);
+      this.vehiculosAlmacenados[this.indiceVehiculosAlmacenados].guardado=true;
+    });
+  }
+
+  cambioTabVehiculo(event: any) {
+    const selectedIndex = event.index;
+    this._vehiculosService.setIndiceVhiculosAlmacenados(selectedIndex);
+  }
 
   propietarioArrayForm = this._formBuilder.array([
     this.crearFormPropietario(),
@@ -31,22 +49,33 @@ export class CrearItemsComponent implements OnInit {
     this.crearFormVehiculo(),
   ]);
 
-  propietariosAlmacenados: any;
-  vehiculosAlmacenados: any;
-
   getPropietariosAlmacenados() {
     this._propietariosService.getPropietariosAlmacenados().subscribe((data) => {
       this.propietariosAlmacenados = data;
+      console.log("Estos son los propietarios almacenados", this.propietariosAlmacenados);
     });
   }
 
   getVehiculosAlmacenados() {
-    this._propietariosService.getPropietariosAlmacenados().subscribe((data) => {
+    this._vehiculosService.getVehiculosAlmacenados().subscribe((data) => {
       this.vehiculosAlmacenados = data;
+      console.log("Estos son los vehículos almacenados", this.vehiculosAlmacenados);
     });
   }
 
-  constructor(private _propietariosService: PropietariosService, private _formBuilder: FormBuilder) { }
+  getIndiceVehiculosAlmacenados() {
+    this._vehiculosService.getIndiceVehiculosAlmacenados().subscribe((data) => {
+      this.indiceVehiculosAlmacenados = data;
+      this.getVehiculosAlmacenados();
+    });
+  }
+
+  constructor(
+    private _propietariosService: PropietariosService,
+    private _vehiculosService: VehiculosService,
+    private _formBuilder: FormBuilder,
+    private _apiService: ApiService
+    ) { }
 
 
   crearFormPropietario(): FormGroup {
@@ -71,14 +100,16 @@ export class CrearItemsComponent implements OnInit {
       tipo: [, [Validators.required]],
       marca: [, [Validators.required]],
       modelo: [, [Validators.required]],
-      anio: [, [Validators.required]]
+      anio: [, [Validators.required]],
+      propietarioId: [, [Validators.required]]
     });
   }
 
 
   ngOnInit(): void {
     this.getPropietariosAlmacenados();
-    this.getVehiculosAlmacenados();
+    this.getIndiceVehiculosAlmacenados();
+    this._vehiculosService.precargarVehiculosAlmacenados(this.vehiculoArrayForm);
   }
 
 }

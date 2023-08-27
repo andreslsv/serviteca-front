@@ -10,6 +10,10 @@ export class PropietariosService {
     "primero",
     "Segundo",
     "Tercero",
+    "Cuarto",
+    "primero",
+    "Segundo",
+    "Tercero",
     "Cuarto"
   ];
 

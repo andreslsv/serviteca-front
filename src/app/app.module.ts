@@ -20,6 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { ItemsComponent } from './modules/admin/items/items.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -50,6 +51,7 @@ const routerConfig: ExtraOptions = {
         MatFormFieldModule,
         MatInputModule,
         MatTabsModule,
+        MatSelectModule,
 
         // Core module of your application
         CoreModule,
