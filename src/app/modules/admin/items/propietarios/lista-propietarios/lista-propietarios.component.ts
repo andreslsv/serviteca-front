@@ -52,6 +52,8 @@ export class ListaPropietariosComponent implements OnInit {
     });
   }
 
+
+
   constructor(private router: Router,private _apiService:ApiService,private _propietariosService:PropietariosService) { }
 
   ngOnInit(): void {

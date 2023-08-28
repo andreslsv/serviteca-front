@@ -11,12 +11,18 @@ import { ApiService } from 'app/servicios/api.service';
 })
 export class CrearItemsComponent implements OnInit {
   indiceVehiculosAlmacenados: number;
+  indicePropietariosAlmacenados: number;
   propietariosAlmacenados: any;
   vehiculosAlmacenados: any;
 
   quitarVehiculoAlmacenado(){
     this.vehiculosAlmacenados[this.indiceVehiculosAlmacenados]={guardado:false};
     this._vehiculosService.setVhiculosAlmacenados(this.vehiculosAlmacenados);
+  }
+
+  quitarPropietarioAlmacenado(){
+    this.propietariosAlmacenados[this.indicePropietariosAlmacenados]={guardado:false};
+    this._propietariosService.setPropietariosAlmacenados(this.propietariosAlmacenados);
   }
 
   guardarVehiculo() {
@@ -28,9 +34,23 @@ export class CrearItemsComponent implements OnInit {
     });
   }
 
+  guardarPropietario() {
+    this._apiService.postQuery("propietarios","",this.propietarioArrayForm.value[this.indicePropietariosAlmacenados]).subscribe((data)=>{
+      //this.vehiculosAlmacenados[this.indiceVehiculosAlmacenados]=this.vehiculoArrayForm.value[this.indiceVehiculosAlmacenados];
+      //this.propietariosAlmacenados[this.indicePropietariosAlmacenados]=data;
+      this.propietariosAlmacenados[this.indicePropietariosAlmacenados].guardado=true;
+      this._propietariosService.setPropietariosAlmacenados(this.propietariosAlmacenados);
+    });
+  }
+
   cambioTabVehiculo(event: any) {
     const selectedIndex = event.index;
     this._vehiculosService.setIndiceVhiculosAlmacenados(selectedIndex);
+  }
+
+  cambioTabPropietario(event: any) {
+    const selectedIndex = event.index;
+    this._propietariosService.setIndicePropietariosAlmacenados(selectedIndex);
   }
 
   propietarioArrayForm = this._formBuilder.array([
@@ -76,6 +96,13 @@ export class CrearItemsComponent implements OnInit {
     });
   }
 
+  getIndicePropietariosAlmacenados() {
+    this._propietariosService.getIndicePropietariosAlmacenados().subscribe((data) => {
+      this.indicePropietariosAlmacenados = data;
+      this.getPropietariosAlmacenados();
+    });
+  }
+
   constructor(
     private _propietariosService: PropietariosService,
     private _vehiculosService: VehiculosService,
@@ -114,9 +141,10 @@ export class CrearItemsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getPropietariosAlmacenados();
+    this.getIndicePropietariosAlmacenados();
     this.getIndiceVehiculosAlmacenados();
     this._vehiculosService.precargarVehiculosAlmacenados(this.vehiculoArrayForm);
+    this._propietariosService.precargarPropietariosAlmacenados(this.propietarioArrayForm);
   }
 
 }
