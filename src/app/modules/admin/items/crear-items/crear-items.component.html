@@ -94,9 +94,13 @@
                                             <mat-label>Conductor</mat-label>
                                             <input matInput type="text" formControlName="conductor" />
                                         </mat-form-field>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Descripción</mat-label>
+                                            <input matInput type="text" formControlName="descripcion" />
+                                        </mat-form-field>
                                     </div>
                                     <div class="grid grid-cols-3 gap-2 -mt-3">
-                                        <mat-form-field appearance="outline">h
+                                        <mat-form-field appearance="outline">
                                             <mat-label>Marca</mat-label>
                                             <mat-select matInput formControlName="marca">
                                                 <mat-option value="1">Marca 1</mat-option>
@@ -104,7 +108,7 @@
                                         </mat-form-field>
                                         <mat-form-field appearance="outline">
                                             <mat-label>Modelo</mat-label>
-                                            <mat-select matInput formControlName="modelo">
+                                            <mat-select matInput formControlName="modeloId">
                                                 <mat-option value="1">Modelo 1</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -121,7 +125,47 @@
                             </ng-container>
                             <ng-container *ngIf="vehiculosAlmacenados[i]?.placa">
                                 <div class="p-4 bg-stone-100 rounded-lg">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti atque veniam quas distinctio ipsam optio illo. Maiores eligendi obcaecati a deleniti, totam, natus illo earum, assumenda cum tenetur harum. Odit!
+                                    <div class="flex flex-row justify-between">
+                                        <h2 class="text-xl">Vehículo guardado</h2>
+                                        <div>
+                                            <button mat-icon-button color="accent"
+                                                aria-label="Example icon button with a menu icon">
+                                                <mat-icon [svgIcon]="'feather:chevrons-right'"></mat-icon>
+                                            </button>
+                                            <button (click)="quitarVehiculoAlmacenado()" mat-icon-button color="accent"
+                                                aria-label="Example icon button with a menu icon">
+                                                <mat-icon [svgIcon]="'feather:x'"></mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="text-4xl py-2 flex justify-center items-center flex-col">
+                                            <div class="text-md -mb-2">
+                                                {{vehiculosAlmacenados[indiceVehiculosAlmacenados]?.tipo ==
+                                                1?'Automotor':'Motocicleta'}}</div>
+                                            {{vehiculosAlmacenados[indiceVehiculosAlmacenados]?.placa}}
+                                        </div>
+                                        <div class="flex justify-between flex-row">
+                                            <div class="text-2xl text-center">
+                                                <div class="text-md -mb-2">Marca</div>
+                                                {{vehiculosAlmacenados[indiceVehiculosAlmacenados]?.Modelo?.Marca?.nombre}}
+                                            </div>
+                                            <div class="text-2xl text-center">
+                                                <div class="text-md -mb-2">Modelo</div>
+                                                {{vehiculosAlmacenados[indiceVehiculosAlmacenados]?.Modelo?.nombre}}
+                                            </div>
+                                            <div class="text-2xl text-center">
+                                                <div class="text-md -mb-2">Año</div>
+                                                {{vehiculosAlmacenados[indiceVehiculosAlmacenados]?.anio}}
+                                            </div>
+                                        </div>
+
+                                        <div class="text-2xl">
+                                            {{vehiculosAlmacenados[indiceVehiculosAlmacenados]?.Propetario?.nombre}}
+                                        </div>
+
+
+                                    </div>
                                 </div>
                             </ng-container>
                         </mat-tab>

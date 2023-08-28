@@ -14,11 +14,17 @@ export class CrearItemsComponent implements OnInit {
   propietariosAlmacenados: any;
   vehiculosAlmacenados: any;
 
+  quitarVehiculoAlmacenado(){
+    this.vehiculosAlmacenados[this.indiceVehiculosAlmacenados]={guardado:false};
+    this._vehiculosService.setVhiculosAlmacenados(this.vehiculosAlmacenados);
+  }
+
   guardarVehiculo() {
     this._apiService.postQuery("vehiculo","",this.vehiculoArrayForm.value[this.indiceVehiculosAlmacenados]).subscribe((data)=>{
-      this.vehiculosAlmacenados[this.indiceVehiculosAlmacenados]=this.vehiculoArrayForm.value[this.indiceVehiculosAlmacenados];
-      this._vehiculosService.setVhiculosAlmacenados(this.vehiculosAlmacenados);
+      //this.vehiculosAlmacenados[this.indiceVehiculosAlmacenados]=this.vehiculoArrayForm.value[this.indiceVehiculosAlmacenados];
+      this.vehiculosAlmacenados[this.indiceVehiculosAlmacenados]=data;
       this.vehiculosAlmacenados[this.indiceVehiculosAlmacenados].guardado=true;
+      this._vehiculosService.setVhiculosAlmacenados(this.vehiculosAlmacenados);
     });
   }
 
@@ -99,9 +105,10 @@ export class CrearItemsComponent implements OnInit {
       conductor: [, [Validators.required]],
       tipo: [, [Validators.required]],
       marca: [, [Validators.required]],
-      modelo: [, [Validators.required]],
+      modeloId: [, [Validators.required]],
       anio: [, [Validators.required]],
-      propietarioId: [, [Validators.required]]
+      propietarioId: [, [Validators.required]],
+      descripcion: [, [Validators.required]]
     });
   }
 
